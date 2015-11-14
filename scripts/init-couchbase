@@ -1,0 +1,9 @@
+#!/bin/bash
+
+sleep 30
+
+/opt/couchbase/bin/couchbase-cli cluster-init -c 127.0.0.1:8091 --cluster-init-username=admin --cluster-init-password=oogway --cluster-init-port=8091 --cluster-init-ramsize=512
+
+/opt/couchbase/bin/couchbase-cli bucket-create -c 127.0.0.1:8091 --bucket=atlas_oogway --bucket-type=couchbase --bucket-ramsize=100 --bucket-password=oogway --bucket-replica=0 -u admin -p oogway
+
+/opt/couchbase/bin/couchbase-cli bucket-create -c 127.0.0.1:8091 --bucket=atlas_session --bucket-type=couchbase --bucket-ramsize=100 --bucket-password=session --bucket-replica=0 -u admin -p oogway
